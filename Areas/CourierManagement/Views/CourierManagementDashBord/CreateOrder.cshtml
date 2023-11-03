@@ -1,0 +1,237 @@
+﻿@model CourierManagementSystem.Areas.CourierManagement.Models.CreateOrderVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Equipment Requisition";
+
+}
+
+<style>
+  
+
+</style>
+<form class="user" asp-area="CourierManagement" asp-controller="CourierManagementDashBord" asp-action="CreateOrder" method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">ConsignmentNumber<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="consignmentNumber" name="consignmentNumber" value="Con-387473e94797" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">Customer Name<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="customerName" name="customerName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">Address<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="address" name="address" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">Mobile<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="mobile" name="mobile" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">OrderPlacedDate<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="OrderPlacedDate" name="OrderPlacedDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">EstimatedDeliveryDate<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="estimatedDeliveryDate" name="estimatedDeliveryDate" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">ItemName<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="itemName" name="itemName" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Quantity<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="quantity" name="quantity" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Unit Price<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="UnitPrice" name="UnitPrice" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Weaight<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="Weaight" name="Weaight" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Heaight<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="heaight" name="heaight" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">DeliveryCharge<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="deliveryCharge" name="deliveryCharge" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Heaight<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="dueAmount" name="dueAmount" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="reqQty" class="col-sm-4 col-form-label">Heaight<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="dueAmount" name="dueAmount" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">ProcessedBranch<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="processedBranch" name="processedBranch" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">PickupBranch<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="pickupBranch" name="pickupBranch" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group row" ">
+                        <label for="ItemName" class="col-sm-4 col-form-label">ProductType<span style="color:red;">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="productType" name="productType" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="delivaryAdd" class="col-sm-4 col-form-label">Delivery Address</label>
+                        <div class="col-sm-8">
+                            <textarea type="text" class="form-control" id="deliveryaddress" name="deliveryaddress"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" value="Add" title="Add" class="btn btn-success btn-lg ml-1" style="float:right; margin-top:5px;">Save<i class="fas fa-list fa-w-1"></i></button>&nbsp;&nbsp;
+                    <button type="button" onclick="Refresh()" value="Refresh" title="Refresh" class="btn btn-success btn-lg ml-1" style="float:right; margin-top:5px;"><i class="fas fa-circle-notch"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</form>
+
+
+
+
+
+@section Scripts{
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js" type="text/javascript"></script>
+    @*<script src="~/js/jquery.autocomplete.js" type="text/javascript"></script>
+        <script src="~/js/jquery.autocomplete.min.js" type="text/javascript"></script>*@
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+          //  $("#estimatedDeliveryDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+            $("#OrderPlacedDate").datepicker({
+                dateFormat: "dd-M-yy",
+                showAnim: "scale",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2010:2030"
+            }).datepicker("setDate", new Date());
+
+        });
+
+    </script>
+
+}
+
+
+

@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@ViewData["Title"] BOAT CLUB</title>
+    <title>@ViewData["Title"] Courier Management</title>
 
     <link rel="shortcut icon" href="" type="image/x-icon" />
 
@@ -504,11 +504,11 @@
                     <div id="scrl" class="NavScrl" style="margin-top:10px;">
 
                         <ul class="navbar-nav sidebar sidebar-dark accordion navCustom" style="background-color: #ecf0f3;padding-top:-10px;font-size:12px!important" id="accordionSidebar">
-                            @if (userInfos.roleName == "Admin")
+                            @if (userInfos?.roleName == "Admin")
                             {
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
-                                        <a href="/SCMRequisition/RequisitionDashbord/UnitRequisitionRaiser" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
-                                            <span style="font-size:20px;color:#040158;" id="dashboard">List</span>
+                                    <a href="/CourierManagement/CourierManagementDashBord/Index" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
+                                        <span style="font-size:20px;color:#040158;" id="dashboard">Courier Management</span>
                                         </a>
                                     </li>
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
@@ -601,78 +601,7 @@
             </div>
         </div>
     </div>
-    <!-- Change Password Modal-->
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password </h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form asp-area="Auth" asp-controller="Account" asp-action="ChangePassword" method="post" role="form" data-parsley-validate="parsley">
-                        <div class="form-group row">
-                            <label class="col-md-4 col-lg-4 col-sm-12" style="color:black;" for="OldPassword">Current Password<span style="float:right;">:</span></label>
-                            <div class="col-md-8 col-lg-8 col-sm-12">
-                                <input type="password" class="form-control" id="OldPassword" name="OldPassword" autocomplete="off" data-parsley-required="true" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-4 col-lg-4 col-sm-12" style="color:black;" for="Password">New Password<span style="float:right;">:</span></label>
-                            <div class="col-md-8 col-lg-8 col-sm-12">
-                                <input type="password" class="form-control" id="Password" name="Password" autocomplete="off" data-parsley-required="true" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-4 col-lg-4 col-sm-12" style="color:black;" for="ConfirmPassword">Confirm Password<span style="float:right;">:</span></label>
-                            <div class="col-md-8 col-lg-8 col-sm-12">
-                                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" autocomplete="off" data-parsley-required="true" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12 col-lg-12 col-sm-12">
-                                <button type="submit" style="float:right;" class="btn btn-success">Submit</button>
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="updatePhotoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Photo</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form asp-area="HRPMSEmployee" asp-controller="Photograph" asp-action="Index" method="post" enctype="multipart/form-data" data-parsley-validate="parsley">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group row">
-                            <div class="col-5">
-                               
-                                <input type="hidden" id="hiddenFile" />
-                            </div>
-                            <div class="col-7">
-                                <img id="user_img" style="width:200px;height:200px" src="~/images/user.png" alt="" class="img-thumbnail float-left">
-                                
-                                <span style="float:left;" class="redStar">*</span>
-                            </div>
-                        </div>
-                        <hr>
-                        <button type="submit" value="Submit" class="btn btn-success btn-lg" style="float:right; margin-top:5px;"><i class="fas fa-save"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     <!-- Bootstrap core JavaScript-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -701,9 +630,6 @@
     <script src="~/SweetAlert/sweetalert2.js"></script>
     <script src="~/js/jquery.autocomplete.js" type="text/javascript"></script>
     <script type="text/javascript" src="~/js/canvas/jquery.canvasjs.min.js"></script>
-    <script type="text/javascript" src="~/qrcode/jquery-qrcode-0.17.0.js"></script>
-    <script type="text/javascript" src="~/qrcode/jquery-qrcode-0.17.0.min.js"></script>
-    <script type="text/javascript" src="~/qrcode/scripts.js"></script>
     <!-- Comon Ajax Lib -->
     <script type="text/javascript" src="~/js/common.js"></script>
     <script type="text/javascript" src="~/js/jquery.number.js"></script>
@@ -724,27 +650,7 @@
 
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
-            // $('#lanENG').show();
-            // $('#lanBAN').hide();
-
-            //setCookie('lang', 'en', 30);
-            $('#lanBAN').click(function () {
-                setCookie('lang', 'bn', 30);
-                //$('#lanBAN').hide();
-                //$('#lanENG').show();
-            });
-            $('#lanENG').click(function () {
-                setCookie('lang', 'en', 30);
-                //$('#lanBAN').show();
-                //$('#lanENG').hide();
-            });
-            //$('#menu').load('@Url.Action("Navigation", "Home")');
-            $('#menu').load('@Url.Action("AssignPage", "Home")');
-            $('.customSelect').select2();
-            $(".select2").css("width", "100%");
-            $(".select2-selection--single").css("height", "33px");
-            $(".select2-selection--single").css("border", "1px solid #d1d3e2");
-            $(".select2-selection__rendered").css("line-height", "32px");
+            
 
 
         });
@@ -776,20 +682,7 @@
     </script>
 
     <script>
-        $(".arlo_tm_resize").click(function () {
-            var existBtnClass = $(this).attr('class');
-            var existDrawerClass = $('.arlo_tm_leftpart_wrap').attr('class');
-
-            if (existBtnClass == 'arlo_tm_resize' && existDrawerClass == 'arlo_tm_leftpart_wrap') {
-                $(".arlo_tm_resize").addClass('opened');
-                $(".arlo_tm_leftpart_wrap").addClass('opened');
-            }
-            else {
-                $(".arlo_tm_resize").removeClass('opened');
-                $(".arlo_tm_leftpart_wrap").removeClass('opened');
-            }
-
-        })
+       
 
         function formatDate2(date) {
             var months = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
