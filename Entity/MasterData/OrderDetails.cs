@@ -12,7 +12,7 @@
         public decimal? dueAmount { get; set; }
         public string? processedBranch { get; set; }
         public string? pickupBranch { get; set; }
-        public string productType { get; set; }
-        public string remarks { get; set; }
+        public string? productType { get; set; }
+        public string? remarks { get; set; }
     }
 }

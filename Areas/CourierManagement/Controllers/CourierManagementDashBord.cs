@@ -1,5 +1,6 @@
 ﻿using CourierManagementSystem.Areas.CourierManagement.Models;
 using CourierManagementSystem.Entity.MasterData;
+using CourierManagementSystem.Services.AuthService;
 using CourierManagementSystem.Services.CourierManagementService.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -20,9 +21,13 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateOrder()
+        public async Task<IActionResult> CreateOrder()
         {
-            return View();
+            CreateOrderVM model = new CreateOrderVM
+            {
+                userInfoes = await courierManagement.GetAllShipper()
+            };
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> CreateOrder(CreateOrderVM model)
@@ -36,8 +41,11 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
                 ConsignmentNumber = model.consignmentNumber,
                 OrderPlacedDate = model.OrderPlacedDate,
                 EstimatedDeliveryDate = model.estimatedDeliveryDate,
+                Consignmentstatus=1,//Ordered place
                 isActive = 1,
+                ApplicationUserId=model.ShipperId,
                 remarks = "Test"
+                
 
             };
             var customerId = await courierManagement.SaveUserCustomer(customer);
@@ -75,6 +83,11 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
             };
             return View(courier);
         }
+
+
+       
+
+
     }
     
 }

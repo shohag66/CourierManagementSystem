@@ -1,5 +1,6 @@
 ﻿using CourierManagementSystem.Entity;
 using CourierManagementSystem.Entity.MasterData;
+using CourierManagementSystem.Services.AuthService;
 using CourierManagementSystem.Services.CourierManagementService.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,19 @@ namespace CourierManagementSystem.Services.CourierManagementService
             try
             {
                 var data = _context.Customers.ToListAsync();
+                return await data;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public async Task<IEnumerable<ApplicationUser>> GetAllShipper()
+        {
+            try
+            {
+                var data = _context.Users.Where(x=>x.userTypeId==3).ToListAsync();
                 return await data;
             }
             catch (Exception ex)

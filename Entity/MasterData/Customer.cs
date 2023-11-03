@@ -10,6 +10,10 @@
         public DateTime? EstimatedDeliveryDate { get; set; }
         public int? Consignmentstatus { get; set; }  //
         public int? isActive { get; set; }
-        public string remarks { get; set; }
+        public string? remarks { get; set; }
+
+        //Shipper User LInk
+        public string? ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

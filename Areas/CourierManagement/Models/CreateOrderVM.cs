@@ -1,4 +1,6 @@
 ﻿using CourierManagementSystem.Areas.Auth.Models;
+using CourierManagementSystem.Entity;
+using CourierManagementSystem.Services.AuthService;
 using static System.Collections.Specialized.BitVector32;
 
 namespace CourierManagementSystem.Areas.CourierManagement.Models
@@ -23,6 +25,8 @@ namespace CourierManagementSystem.Areas.CourierManagement.Models
         public string pickupBranch { get; set; }
         public string productType { get; set; }
         public string deliveryaddress { get; set; }
+        public string ShipperId { get; set; }
+        public IEnumerable<ApplicationUser> userInfoes { get; set; }
 
 
 
