@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
 using CourierManagementSystem.Services.CourierManagementService.Interface;
 using CourierManagementSystem.Services.CourierManagementService;
+using CourierManagementSystem.Services.ShipperService;
+using CourierManagementSystem.Services.ShipperService.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +95,7 @@ builder.Services.Configure<FormOptions>(o =>
 builder.Services.AddScoped<IDbChangeService, DbChangeService>();
 builder.Services.AddScoped<IUserInfoes, UserInfoes>();
 builder.Services.AddScoped<ICourierManagement, CourierManagement>();
+builder.Services.AddScoped<IShipper, Shipper>();
 #region Configuration
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

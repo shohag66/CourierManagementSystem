@@ -81,10 +81,10 @@ namespace CourierManagementSystem.Areas.Auth.Controllers
                                // return Redirect("/SCMDashboard/Dashboard/GetDashBoardForDIG");
                                 return Redirect("/Admin/AdminDasbord/Index");
                             }
-                            else if (userRole == "customer")
+                            else if (userRole == "Shipper")
                             {
 
-                                return Redirect("/Home/Privacy");
+                                return Redirect("Shipper/Shipper/Index");
                             }
                             
                             else

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CourierManagementSystem.Services.CourierManagementService
 {
-    public class CourierManagement: ICourierManagement
+    public class CourierManagement : ICourierManagement
     {
         private readonly ApplicationDbContext _context;
 
@@ -32,7 +32,7 @@ namespace CourierManagementSystem.Services.CourierManagementService
         {
             try
             {
-                var data = _context.Users.Where(x=>x.userTypeId==3).ToListAsync();
+                var data = _context.Users.Where(x => x.userTypeId == 3).ToListAsync();
                 return await data;
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace CourierManagementSystem.Services.CourierManagementService
         {
             try
             {
-                var data = _context.Customers.Where(x=>x.Consignmentstatus==1).ToListAsync();
+                var data = _context.Customers.Where(x => x.Consignmentstatus == 1).ToListAsync();
                 return await data;
             }
             catch (Exception ex)
@@ -114,6 +114,61 @@ namespace CourierManagementSystem.Services.CourierManagementService
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+
+        public async Task<int> SaveShipTracking(ShipTracking model)
+        {
+            try
+            {
+                if (model.Id != 0)
+                {
+                    _context.ShipTrackings.Update(model);
+                }
+                else
+                {
+                    _context.ShipTrackings.Add(model);
+                }
+
+                await _context.SaveChangesAsync();
+                return model.Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<int> UpdateCustomerStatus(int id,int status)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(id);
+                if (customer != null)
+                {
+                    _context.Entry(customer).State = EntityState.Detached;
+                    customer.Consignmentstatus = status;
+                    _context.Customers.Attach(customer);
+                    _context.Entry(customer).Property(x => x.Consignmentstatus).IsModified = true;
+                    await _context.SaveChangesAsync();
+                    return customer.Id;
+                }
+                else
+                {
+                    throw new Exception("Customer not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+
+
+
+
+
             }
         }
     }

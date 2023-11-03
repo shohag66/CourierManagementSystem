@@ -1,4 +1,4 @@
-﻿@model CourierManagementSystem.Areas.CourierManagement.Models.CourierManagementListVM 
+﻿@model CourierManagementSystem.Areas.Shipper.Models.ShipperVM
 @{
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,8 +28,8 @@
         }
 
         /*.cb {
-            height: 194px;
-        }*/
+                height: 194px;
+            }*/
 
         .c .cb {
             transition: .3s all;
@@ -105,27 +105,24 @@
                     </thead>
                     <tbody>
                         @{
-                        int slno = 0;
+                            int slno = 0;
 
-                        @foreach (var data in Model.PlacedOrderList)
-                        {
-                            slno = slno + 1;
-                            <tr>
-                                <td>@slno</td>
-                                <td>@data.ConsignmentNumber</td>
-                                <td>@data.OrderPlacedDate?.ToString("dd-MMM-yyyy")</td>
-                                <td>@data.EstimatedDeliveryDate?.ToString("dd-MMM-yyyy")</td>
-                                <td>@data.Name</td>
-                                <td>@data.Address</td>
-                                <td>
-                       
-                                <span class="badge badge-success">Order Placed</span>
-                        
-                            
-                                </td>
-                       
-                            </tr>
-                        }
+                            @foreach (var data in Model.customers)
+                            {
+                                slno = slno + 1;
+                                <tr>
+                                    <td>@slno</td>
+                                    <td>@data.ConsignmentNumber</td>
+                                    <td>@data.OrderPlacedDate?.ToString("dd-MMM-yyyy")</td>
+                                    <td>@data.EstimatedDeliveryDate?.ToString("dd-MMM-yyyy")</td>
+                                    <td>@data.Name</td>
+                                    <td>@data.Address</td>
+                                    <td>
+                                        <button onclick="ConfirmPicUpAction('@data.Id')">Pickedup</button>
+                                    </td>
+
+                                </tr>
+                            }
 
                         }
                     </tbody>
@@ -150,7 +147,7 @@
             //$('#fromDate').flatpickr({ dateFormat: "d-M-Y" });
             //$('#toDate').flatpickr({ dateFormat: "d-M-Y" });
 
-     
+
 
             $("#education").addClass("active");
             $('#requisitionListTable').DataTable({
@@ -214,10 +211,10 @@
             });
         });
 
-       
-       
 
-        
+
+
+
 
         function formatDate(date) {
             var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -234,6 +231,37 @@
 
             return day + "-" + month + "-" + year;
         }
+
+
+        function ConfirmPicUpAction(Id) {
+            alert(Id);
+            swal({
+                title: 'Are you sure?',
+                text: "Pciked Up",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ok!'
+            }).then((result) => {
+                if (true) {
+                    $.ajax({
+                        url:'/Shipper/Shipper/ShipperPickeUp',
+                        type: "POST",
+                        data: { Id: Id },
+                        success: function (data) {
+                            location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error here
+                        }
+                    });
+                }
+            });
+        }
+
+
+
 
     </script>
 }

@@ -69,6 +69,15 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
             };
             await courierManagement.SaveOrderDetails(orderDetails);
 
+            ShipTracking shipModel = new ShipTracking
+            {
+                customerId = customerId,
+                ApplicationUserId = model.ShipperId,
+                ConsignmentNumber = model.consignmentNumber,
+                ConsigmentStatus = 1,
+                EditDateTime = DateTime.Now,
+            };
+            await courierManagement.SaveShipTracking(shipModel);
 
             return View();
         }

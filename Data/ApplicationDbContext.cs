@@ -15,6 +15,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<UserLogHistory> UserLogHistories { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<OrderDetails> OrderDetails { get; set; }
+    public DbSet<ShipTracking> ShipTrackings { get; set; }
 
 
 
