@@ -8,4 +8,5 @@ Admin DashBord
 
 placed Ordered List
 
-![Place Ordewr Listy](https://github.com/shohag66/CourierManagementSystem/assets/107748509/1c6d94b5-e047-4c62-82a8-ec55147c2923)
+
+![Ordered polace List](https://github.com/shohag66/CourierManagementSystem/assets/107748509/62f27799-4ed1-447c-a42b-8a044720fe4c)
