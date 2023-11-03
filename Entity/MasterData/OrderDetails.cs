@@ -9,7 +9,6 @@
         public decimal? weaight { get; set; }
         public decimal? heaight { get; set; }
         public decimal? deliveryCharge { get; set; }
-        public decimal? totalAmount { get; set; }
         public decimal? dueAmount { get; set; }
         public string? processedBranch { get; set; }
         public string? pickupBranch { get; set; }

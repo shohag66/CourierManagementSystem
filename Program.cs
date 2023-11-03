@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
+using CourierManagementSystem.Services.CourierManagementService.Interface;
+using CourierManagementSystem.Services.CourierManagementService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,39 +20,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-//builder.Services.AddDbContext<ERPDbContext>(options =>
-//{
-//    options.UseOracle(builder.Configuration.
-//        GetConnectionString("ERPConnection"));
-//});
 
 builder.Services.AddMemoryCache();
-//.AddDefaultTokenProviders();
-//builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-//   .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddHttpContextAccessor();
-//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-//builder.Services.AddControllers()
-//            .AddNewtonsoftJson(options =>
-//            {
-//                options.SerializerSettings.ContractResolver = null;
-//            });
-
 builder.Services.AddControllersWithViews(option =>
 {
     option.MaxModelBindingCollectionSize = int.MaxValue;
 }).AddJsonOptions(options => {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
-    //options.JsonSerializerOptions.MaxDepth = 10;
     options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
 
 }).AddRazorRuntimeCompilation();
 
 builder.Services.AddRazorPages();
-//builder.Configuration.GetSection("ReportPorts").Bind(AppConst.ports);
-//var x = AppConst.ports;
 #endregion
 
 #region Auth Related Settings
@@ -107,33 +92,20 @@ builder.Services.Configure<FormOptions>(o =>
 
 builder.Services.AddScoped<IDbChangeService, DbChangeService>();
 builder.Services.AddScoped<IUserInfoes, UserInfoes>();
-
+builder.Services.AddScoped<ICourierManagement, CourierManagement>();
 #region Configuration
 var app = builder.Build();
-
-//var userManager = app.Services.GetRequiredService<UserManager<ApplicationUser>>();
-//var roleManager = app.Services.GetRequiredService<RoleManager<ApplicationRole>>();
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseSession();
-
-//SeedData.Seed(userManager, roleManager);
-
-//app.MapRazorPages();
-
 app.MapControllerRoute(
     name: "Areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

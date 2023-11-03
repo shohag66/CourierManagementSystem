@@ -1,11 +1,20 @@
 ﻿using CourierManagementSystem.Areas.CourierManagement.Models;
+using CourierManagementSystem.Entity.MasterData;
+using CourierManagementSystem.Services.CourierManagementService.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Diagnostics.Metrics;
 
 namespace CourierManagementSystem.Areas.CourierManagement.Controllers
 {
     [Area("CourierManagement")]
     public class CourierManagementDashBord : Controller
     {
+        private readonly ICourierManagement courierManagement;
+        public CourierManagementDashBord(ICourierManagement courierManagement)
+        {
+            this.courierManagement = courierManagement;
+        }
         public IActionResult Index()
         {
             return View();
@@ -16,11 +25,56 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateOrder(CreateOrderVM model)
+        public async Task<IActionResult> CreateOrder(CreateOrderVM model)
         {
+
+            Customer customer = new Customer
+            {
+                Name = model.customerName,
+                Address = model.address,
+                MobileNumber = model.mobile,
+                ConsignmentNumber = model.consignmentNumber,
+                OrderPlacedDate = model.OrderPlacedDate,
+                EstimatedDeliveryDate = model.estimatedDeliveryDate,
+                isActive = 1,
+                remarks = "Test"
+
+            };
+            var customerId = await courierManagement.SaveUserCustomer(customer);
+
+
+            OrderDetails orderDetails = new OrderDetails
+            {
+                customerId = customerId,
+                itemQty = model.quantity,
+                unitRate = model.UnitPrice,
+                weaight = model.Weaight,
+                heaight = model.heaight,
+                deliveryCharge = model.deliveryCharge,
+                dueAmount = model.dueAmount,
+                processedBranch = model.processedBranch,
+                pickupBranch = model.pickupBranch,
+                productType = "Test",
+                remarks = "Test"
+
+
+            };
+            await courierManagement.SaveOrderDetails(orderDetails);
+
 
             return View();
         }
 
+
+        public async Task<IActionResult> GetAllOrderPlacedList(CourierManagementListVM model)
+        {
+            CourierManagementListVM courier = new CourierManagementListVM
+            {
+                PlacedOrderList = await courierManagement.GetAllOrderedPlacedList()
+
+            };
+            return View(courier);
+        }
     }
+    
 }
