@@ -10,4 +10,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     {
         this._httpContextAccessor = httpContextAccessor;
     }
+    public DbSet<UserLogHistory> UserLogHistories { get; set; }
 }
