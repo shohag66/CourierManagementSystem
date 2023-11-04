@@ -20,6 +20,20 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
         {
             return View();
         }
+        public IActionResult CustomerManagementDadBord()
+        {
+            return View();
+        }
+
+        public IActionResult ShipperManagementDadBord()
+        {
+            return View();
+        }
+        public IActionResult AdminAllReport()
+        {
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> CreateOrder()
         {
@@ -107,7 +121,25 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
         }
 
 
-       
+        public async Task<IActionResult> GetAllPickupOrderList(CourierManagementListVM model)
+        {
+            CourierManagementListVM courier = new CourierManagementListVM
+            {
+                PlacedOrderList = await courierManagement.GetAllPickupOrderedPlacedList()
+
+            };
+            return View(courier);
+        }
+
+        public async Task<IActionResult> GetAllDeliveredOrderList(CourierManagementListVM model)
+        {
+            CourierManagementListVM courier = new CourierManagementListVM
+            {
+                PlacedOrderList = await courierManagement.GetAllDeliveredOrderedPlacedList()
+
+            };
+            return View(courier);
+        }
 
 
     }

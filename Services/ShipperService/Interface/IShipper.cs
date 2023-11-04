@@ -9,5 +9,6 @@ namespace CourierManagementSystem.Services.ShipperService.Interface
         Task<Customer> GetOrderInfoById(int Id);
         Task<IEnumerable<Customer>> GetShipperPickupOrderedList(string shipperId);
         Task<IEnumerable<Customer>> GetShipperDeliveredOrderedList(string shipperId);
+        Task<IEnumerable<Customer>> GetAllDetailsPickupByShipper();
     }
 }

@@ -1,4 +1,8 @@
-﻿using CourierManagementSystem.Services.AuthService.Interfaces;
+﻿using CourierManagementSystem.Areas.CustomerUser.Models;
+
+using CourierManagementSystem.Services.AuthService.Interfaces;
+using CourierManagementSystem.Services.CourierManagementService;
+using CourierManagementSystem.Services.CourierManagementService.Interface;
 using CourierManagementSystem.Services.CustomerUserService.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +14,11 @@ namespace CourierManagementSystem.Areas.CustomerUser.Controllers
     public class CustomerUserController : Controller
     {
         private readonly ICustomerUser customerUser;
-
-        public CustomerUserController(ICustomerUser customerUser)
+        private readonly ICourierManagement courierManagement;
+        public CustomerUserController(ICustomerUser customerUser, ICourierManagement courierManagement)
         {
-            this.customerUser = customerUser;  
+            this.customerUser = customerUser;
+            this.courierManagement = courierManagement;
         }
         public IActionResult Index()
         {
@@ -29,6 +34,17 @@ namespace CourierManagementSystem.Areas.CustomerUser.Controllers
         {
             return View();
         }
+
+
+        public async Task<IActionResult> GetAllCustomerUsers()
+        {
+            var data = new CustomerManagementVM
+            {
+                customers = await courierManagement.GetAllCustomer()
+            };
+            return View(data);
+        }
+
 
         #region Customer Track Data Load API
         [HttpGet]

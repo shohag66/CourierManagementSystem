@@ -16,6 +16,8 @@ namespace CourierManagementSystem.Services.CourierManagementService.Interface
         Task<IEnumerable<ApplicationUser>> GetAllShipper();
         Task<int> SaveShipTracking(ShipTracking model);
         Task<int> UpdateCustomerStatus(int id, int status);
+        Task<IEnumerable<Customer>> GetAllPickupOrderedPlacedList();
+        Task<IEnumerable<Customer>> GetAllDeliveredOrderedPlacedList();
 
     }
 }

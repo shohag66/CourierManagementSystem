@@ -51,6 +51,20 @@ namespace CourierManagementSystem.Services.ShipperService
                 throw ex;
             }
         }
+
+        public async Task<IEnumerable<Customer>> GetAllDetailsPickupByShipper()
+        {
+            try
+            {
+                var data = _context.Customers.Include(x => x.ApplicationUser).Where(x=>x.Consignmentstatus==2 || x.Consignmentstatus == 3).ToListAsync();
+                return await data;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public async Task<Customer> GetOrderInfoById(int Id)
         {
             try

@@ -3,6 +3,8 @@ using CourierManagementSystem.Entity.MasterData;
 using CourierManagementSystem.Services.AuthService;
 using CourierManagementSystem.Services.AuthService.Interfaces;
 using CourierManagementSystem.Services.CourierManagementService.Interface;
+using CourierManagementSystem.Services.CustomerUserService.Interface;
+using CourierManagementSystem.Services.ShipperService;
 using CourierManagementSystem.Services.ShipperService.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -115,6 +117,20 @@ namespace CourierManagementSystem.Areas.Shipper.Controllers
             };
             return View(model);
         }
+
+
+        public async Task<IActionResult> GetAllDetailsPickupByShipper()
+        {
+       
+            ShipperVM model = new ShipperVM
+            {
+              customers = await shipper.GetAllDetailsPickupByShipper()
+            };
+            return View(model);
+           
+        }
+
+
 
 
     }

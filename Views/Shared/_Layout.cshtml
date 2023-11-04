@@ -487,18 +487,23 @@
 
 
             <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:-10px">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello @User.Identity.Name</span>
+                <a href="#">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false" style="margin-top:-10px" data-toggle="modal" data-target="#logoutModal">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello @User.Identity.Name</span>
                     
-                </a>
-                <!-- Dropdown - User Information -->
-                <div style="width:50px;margin-top:-20px" >
-                    <div class="row">
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
                     </a>
-                </div>
+                <!-- Dropdown - User Information -->
+               
+                    <div style="width:50px;margin-top:-20px">
+                        <div class="row">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </a>
             </li>
 
 
@@ -526,32 +531,28 @@
                             {
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
                                     <a href="/CourierManagement/CourierManagementDashBord/Index" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
-                                        <span style="font-size:20px;color:#040158;" id="dashboard">Courier Management</span>
+                                        <span style="font-size:17px;color:#040158;" id="dashboard">Courier Management</span>
                                         </a>
                                     </li>
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
-                                        <a href="/SCMRequisition/RequisitionMaster/SectionWiseRequisitionListForRaiser" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
-                                            <span style="font-size:20px;color:#040158;" id="requisitionHistory"></span>
+                                        <a href="/CourierManagement/CourierManagementDashBord/CustomerManagementDadBord" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
+                                        <span style="font-size:17px;color:#040158;" id="">Customer Management</span>
                                         </a>
                                     </li>
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
-                                        <a href="/SCMRequisition/RequisitionDashbord/UnitReqRaiserItemReceived" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
-                                            <span style="font-size:20px;color:#040158;" id="itemReceived"></span>
+                                        <a href="/CourierManagement/CourierManagementDashBord/ShipperManagementDadBord" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
+                                         <span style="font-size:17px;color:#040158;" id=""> Shipper Management</span>
                                         </a>
                                     </li>
 
 
                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
-                                            <a href="/SCMRequisition/RequisitionDashbord/UnitReqRaiserLocalPurchase" class="nav-link submenu">
-                                                <span style="font-size:20px;color:#040158;" id="localpurchase"></span>
+                                            <a href="/CourierManagement/CourierManagementDashBord/AdminAllReport" class="nav-link submenu">
+                                                <span style="font-size:17px;color:#040158;" id="">Report</span>
                                             </a>
                                      </li>
 
-                                     <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
-                                            <a href="/SCMRequisition/RequisitionDashbord/SubUnitReqRaiserReport" class="nav-link submenu">
-                                                <span style="font-size:20px;color:#040158;" id="report"></span>
-                                            </a>
-                                     </li>
+                                  
                                     
                                 
 

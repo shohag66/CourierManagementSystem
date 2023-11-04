@@ -57,7 +57,33 @@ namespace CourierManagementSystem.Services.CourierManagementService
                 throw ex;
             }
         }
+        public async Task<IEnumerable<Customer>> GetAllPickupOrderedPlacedList()
+        {
+            try
+            {
+                var data = _context.Customers.Where(x => x.Consignmentstatus == 2).ToListAsync();
+                return await data;
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Customer>> GetAllDeliveredOrderedPlacedList()
+        {
+            try
+            {
+                var data = _context.Customers.Where(x => x.Consignmentstatus == 3).ToListAsync();
+                return await data;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public async Task<IEnumerable<OrderDetails>> GetAlLOrderDetails()
         {
