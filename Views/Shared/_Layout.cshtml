@@ -558,6 +558,19 @@
                                 </li>
 
                             }
+                            @if (userInfos?.roleName == "customer")
+                            {
+                                <li class="nav-item btn btn-danger shadow mb-5 p-3 rounded" style="background-color: white; border-radius: 15px!important; padding:0!important; margin-bottom:0px!important; width:200px!important">
+                                    <a href="/CustomerUser/CustomerUser/CustomerAssignDasbord" class="nav-link" id="HomeIcons" onclick="DataLoad(2)">
+                                        <span style="font-size:20px;color:#040158;" id="dashboard">Customer Manaement</span>
+                                    </a>
+                                </li>
+
+
+                            }
+
+
+
                         </ul>
                     </div>
 

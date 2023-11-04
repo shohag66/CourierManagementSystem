@@ -11,6 +11,8 @@ using CourierManagementSystem.Services.CourierManagementService.Interface;
 using CourierManagementSystem.Services.CourierManagementService;
 using CourierManagementSystem.Services.ShipperService;
 using CourierManagementSystem.Services.ShipperService.Interface;
+using CourierManagementSystem.Services.CustomerUserService.Interface;
+using CourierManagementSystem.Services.CustomerUserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,6 +98,7 @@ builder.Services.AddScoped<IDbChangeService, DbChangeService>();
 builder.Services.AddScoped<IUserInfoes, UserInfoes>();
 builder.Services.AddScoped<ICourierManagement, CourierManagement>();
 builder.Services.AddScoped<IShipper, Shipper>();
+builder.Services.AddScoped<ICustomerUser, CustomerUserService>();
 #region Configuration
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

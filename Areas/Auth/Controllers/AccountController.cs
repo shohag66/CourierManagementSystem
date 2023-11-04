@@ -86,7 +86,11 @@ namespace CourierManagementSystem.Areas.Auth.Controllers
 
                                 return Redirect("Shipper/Shipper/Index");
                             }
-                            
+                            else if (userRole == "customer")
+                            {
+
+                                return Redirect("CustomerUser/CustomerUser/Index");
+                            }
                             else
                             {
                                 ModelState.AddModelError(string.Empty, "This User does not have any Access Pages");

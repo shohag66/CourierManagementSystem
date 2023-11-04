@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\CustomerUser\Models\" />
     <Folder Include="wwwroot\AminT\" />
     <Folder Include="wwwroot\vendor\" />
     <Folder Include="wwwroot\plugins\" />
