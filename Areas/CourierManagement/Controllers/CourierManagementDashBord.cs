@@ -23,6 +23,19 @@ namespace CourierManagementSystem.Areas.CourierManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateOrder()
         {
+
+            var Orderd = await courierManagement.GetAllCustomer();
+            int Cordred = 0;
+            Cordred = Orderd.Where(x => Convert.ToDateTime(x.OrderPlacedDate).ToString("MM") == Convert.ToDateTime(DateTime.Now).ToString("MM")).Count();
+            string idateM = Convert.ToDateTime(DateTime.Now).ToString("MM");
+            string idatey = Convert.ToDateTime(DateTime.Now).ToString("yy");
+            string ConsignmentNumber = "";
+            ConsignmentNumber = "Con" + '-' + idateM + idatey + String.Format("{0:00000}", (Cordred + 1));
+
+
+            ViewBag.ConsignmentNumber = ConsignmentNumber;
+
+
             CreateOrderVM model = new CreateOrderVM
             {
                 userInfoes = await courierManagement.GetAllShipper()

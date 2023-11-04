@@ -1,9 +1,11 @@
 ﻿using CourierManagementSystem.Services.AuthService.Interfaces;
 using CourierManagementSystem.Services.CustomerUserService.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierManagementSystem.Areas.CustomerUser.Controllers
 {
+    [Authorize]
     [Area("CustomerUser")]
     public class CustomerUserController : Controller
     {

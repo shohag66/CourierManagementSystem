@@ -1,12 +1,14 @@
 ﻿using CourierManagementSystem.Entity;
 using CourierManagementSystem.Models;
 using CourierManagementSystem.Services.AuthService.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace CourierManagementSystem.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

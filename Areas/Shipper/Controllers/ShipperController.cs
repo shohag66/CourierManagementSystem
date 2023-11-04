@@ -4,10 +4,12 @@ using CourierManagementSystem.Services.AuthService;
 using CourierManagementSystem.Services.AuthService.Interfaces;
 using CourierManagementSystem.Services.CourierManagementService.Interface;
 using CourierManagementSystem.Services.ShipperService.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourierManagementSystem.Areas.Shipper.Controllers
 {
+    [Authorize]
     [Area("Shipper")]
     public class ShipperController : Controller
     {

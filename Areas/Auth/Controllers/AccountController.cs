@@ -1,4 +1,5 @@
 ﻿using CourierManagementSystem.Areas.Auth.Models;
+using CourierManagementSystem.Controllers;
 using CourierManagementSystem.Entity;
 using CourierManagementSystem.Services.AuthService;
 using CourierManagementSystem.Services.AuthService.Interfaces;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CourierManagementSystem.Areas.Auth.Controllers
 {
 
-   // [Authorize]
+    [Authorize]
     [Area("Auth")]
     public class AccountController : Controller
     {
@@ -84,12 +85,12 @@ namespace CourierManagementSystem.Areas.Auth.Controllers
                             else if (userRole == "Shipper")
                             {
 
-                                return Redirect("Shipper/Shipper/Index");
+                                return Redirect("/Shipper/Shipper/Index");
                             }
                             else if (userRole == "customer")
                             {
 
-                                return Redirect("CustomerUser/CustomerUser/Index");
+                                return Redirect("/CustomerUser/CustomerUser/Index");
                             }
                             else
                             {
@@ -122,6 +123,25 @@ namespace CourierManagementSystem.Areas.Auth.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+            UserLogHistory userLog = new UserLogHistory
+            {
+                userId = HttpContext.User.Identity.Name,
+                logTime = DateTime.Now,
+                status = 0,
+                ipAddress = ip
+            };
+           // await dbChangeService.SaveUserLogHistory(userLog);
+            return RedirectToAction(nameof(Login));
+        }
+
 
     }
 }
