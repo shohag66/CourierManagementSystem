@@ -13,6 +13,8 @@ using CourierManagementSystem.Services.ShipperService;
 using CourierManagementSystem.Services.ShipperService.Interface;
 using CourierManagementSystem.Services.CustomerUserService.Interface;
 using CourierManagementSystem.Services.CustomerUserService;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -99,6 +101,9 @@ builder.Services.AddScoped<IUserInfoes, UserInfoes>();
 builder.Services.AddScoped<ICourierManagement, CourierManagement>();
 builder.Services.AddScoped<IShipper, Shipper>();
 builder.Services.AddScoped<ICustomerUser, CustomerUserService>();
+#region PDF
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+#endregion
 #region Configuration
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

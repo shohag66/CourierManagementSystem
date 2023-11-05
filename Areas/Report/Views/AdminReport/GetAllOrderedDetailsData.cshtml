@@ -20,7 +20,6 @@
                         <label for="fromDate" class="col-sm-3  col-form-label">From Date<span style="color:red">*</span></label>
                         <div class="col-sm-9 input-group">
                             <input name="fromDate" id="fromDate" class="form-control input-group-sm" />
-                            <input name="userId " id="userId" type="hidden" value="@ViewBag.EmployeeId " />
                             <div class="input-group-prepend">
                                 <label for="fromDate" class="fas fa-calendar-alt form-control input-group-sm input-group-text bg-white"></label>
 
@@ -66,11 +65,10 @@
         $(document).ready(function () {
 
             $("#fromDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+
             $("#toDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
 
-            $("#forTransfer").hide();
-            $("#fordepartment").hide();
-            $("#forShift").hide();
+    
 
         });
 
@@ -84,9 +82,8 @@
         $("#btnPrint").click(function (e) {
             var fromDate = $('#fromDate').val();
             var toDate = $('#toDate').val();
-            var userId = $('#userId').val();
             //alert(userId);
-            window.open('/SCMReport/ReportMaster/InvoiseWaisePuchaseView?&startDate=' + fromDate + '&endDate=' + toDate + '&userId=' + userId);
+            window.open('/Report/AdminReport/GetAllOrderedDetailsPDF?&startDate=' + fromDate + '&endDate=' + toDate);
 
         });
 
