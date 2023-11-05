@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Report\Models\" />
-    <Folder Include="Areas\Report\Views\" />
     <Folder Include="wwwroot\AminT\" />
     <Folder Include="wwwroot\vendor\" />
     <Folder Include="wwwroot\plugins\" />
